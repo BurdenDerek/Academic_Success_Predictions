@@ -10,6 +10,28 @@ Presentation:
 
     What is the most import for a child to succeed?
 
+    The data in the CSV was already very clean, the only parts that I had to modify were the grade.
+    The grades came in as a score out of 20, but I wanted a binary output so I bucketed them into Pass/Fail.
+
+    Extensive Tableau use brought considerable understanding to how the data is distributed,
+    and even a peak at which variables might hold the most weight.
+
+Machine Learning Model:
+
+    Preprocessing was very light because of how clean the data is, only bucketed the grades into Pass/Fail.
+
+    With each student having 3 individual grades that we can check we can do something interesting.
+    We have the choice to treat the grades from the previous trimesters as additional features,
+    and somewhat unsurprising they actually prove to be the greatest predictors of their sucess.
+
+    The data was split into training and testing with just train_test_split().
+
+    So instead of choosing a single model, I was far more interested in testing all of them to see how they compare.
+    I used oversampling, undersampling, combination sampling, SMOTEEN, random forest, and easy ensemble.
+    If I had to just pick one, I would have to go with using the random forest.
+    Random forest's feature importance is so good at being able to give you 
+    greater insight into which features mattered the most.
+
 CSVs from Kaggle: https://www.kaggle.com/uciml/student-alcohol-consumption
 
 Context:
