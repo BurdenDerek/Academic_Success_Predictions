@@ -1,6 +1,8 @@
 # Academic_Sucess_Predictions
 Final project for bootcamp
 
+CSVs from Kaggle: https://www.kaggle.com/uciml/student-alcohol-consumption
+
 Presentation:
 
     Which features carry the most weight in predicting if a student is going to be academicly successful?
@@ -31,8 +33,6 @@ Machine Learning Model:
     If I had to just pick one, I would have to go with using the random forest.
     Random forest's feature importance is so good at being able to give you 
     greater insight into which features mattered the most.
-
-CSVs from Kaggle: https://www.kaggle.com/uciml/student-alcohol-consumption
 
 Context:
 

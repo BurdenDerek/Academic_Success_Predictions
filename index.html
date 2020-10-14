@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BurdenDerek</title>
+    <link
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body class="bg-dark">
+    <div class="wrapper">
+        <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+            <a class="navbar-brand" href="index.html">Academic Success Prediction</a>
+        </nav>
+    </div>
+    <div class="jumbotron">
+        <h1 class="display-4">How likely are you to pass your class?</h1>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Is education the meritacracy that we are told?<small>What is most important to succeed in school?</small></h3>
+            </div>
+            <div class="col-md-8">
+                <p>
+                    To build the model that is going to make the predictions I used data that is from Portugal that tracked the grade that the students got in their class along with 30 other variables; such as how much education their parents have, how long is their commute, do they have plans for higher education, how much they study, etc. After doing some research on the data showed me that Portugal uses a trimester system and that’s why each student has 3 grades for each course (G1, G2, G3). That is not the only thing interesting about their grades, they use a scale of 0 to 20, where a 10 is the lowest possible passing grade. But by far the most interesting bit is how they grade things, despite using a scale of 0 to 20, they do not make anything as a 20 because that would be a perfect score and there is always something to improve on. The data was titled ”Student Alcohol Consumption” which led me to assume that these were college age students, but a look at the students’ ages shows that it ranges from 15 to 22 and indicates that they are highschoolers.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <form class="bg-dark">
+                    <p>Filter Search</p>
+                    <ul class="bg-dark">
+                        <li class="bg-dark">
+                            <label for="date">Which School Do You Go To?</label>
+                            <input type="text" placeholder="1/10/2010" id="datetime" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">What is your Gender?</label>
+                            <input type="text" placeholder="st. louis" id="city" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">How Old Are you?</label>
+                            <input type="text" placeholder="ca" id="state" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">Where Do You Live?</label>
+                            <input type="text" placeholder="us" id="country" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">How Big Is Your Family?</label>
+                            <input type="text" placeholder="circle" id="shape" />
+                        </li>                        <li class="bg-dark">
+                            <label for="date">Are Your Parents Together?</label>
+                            <input type="text" placeholder="1/10/2010" id="datetime" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">How Much Education Does Your Mom Have?</label>
+                            <input type="text" placeholder="st. louis" id="city" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">How Much Education Does Your Dad Have?</label>
+                            <input type="text" placeholder="ca" id="state" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">What Does Your Mom Do For Work?</label>
+                            <input type="text" placeholder="us" id="country" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">What Does Your Dad Do For Work?</label>
+                            <input type="text" placeholder="circle" id="shape" />
+                        </li>                        
+                        <li class="bg-dark">
+                            <label for="date">Why Did You Choose Your School?</label>
+                            <input type="text" placeholder="1/10/2010" id="datetime" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">Who Is Your Guardian?</label>
+                            <input type="text" placeholder="st. louis" id="city" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">How Long Does It Take To Get To School?</label>
+                            <input type="text" placeholder="ca" id="state" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">How Much Do You Study In A Week?</label>
+                            <input type="text" placeholder="us" id="country" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">How Many Classes Have You Failed Before?</label>
+                            <input type="text" placeholder="circle" id="shape" />
+                        </li>                        
+                        <li class="bg-dark">
+                            <label for="date">Do You Get Extra Support From Your School?</label>
+                            <input type="text" placeholder="1/10/2010" id="datetime" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">Do You Get Extra Support From Your Family?</label>
+                            <input type="text" placeholder="st. louis" id="city" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">Do You Have Extra Paid Tutoring?</label>
+                            <input type="text" placeholder="ca" id="state" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">How Many Extra-Curricular Activities Do You Do?</label>
+                            <input type="text" placeholder="us" id="country" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">Did You Go To Nursery School?</label>
+                            <input type="text" placeholder="circle" id="shape" />
+                        </li>                        <li class="bg-dark">
+                            <label for="date">Do You Have Plans To Continue Your Education?</label>
+                            <input type="text" placeholder="1/10/2010" id="datetime" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">Do You Have Internet At Home?</label>
+                            <input type="text" placeholder="st. louis" id="city" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">Are You In A Romantic Relationship?</label>
+                            <input type="text" placeholder="ca" id="state" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">How Good Is Your Relationship With Your Family?</label>
+                            <input type="text" placeholder="us" id="country" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">How Much Free Time Do You Have After School?</label>
+                            <input type="text" placeholder="circle" id="shape" />
+                        </li>                        
+                        <li class="bg-dark">
+                            <label for="date">How Much Do You Go Out With Your Friends?</label>
+                            <input type="text" placeholder="1/10/2010" id="datetime" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">How Much Alcohol Do You Drink On Weekdays?</label>
+                            <input type="text" placeholder="st. louis" id="city" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">How Much Alcohol Do You Drink On Weekends?</label>
+                            <input type="text" placeholder="ca" id="state" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">How Healthy Are You?</label>
+                            <input type="text" placeholder="us" id="country" />
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date">How Many Class Sessions Have You Missed?</label>
+                            <input type="text" placeholder="circle" id="shape" />
+                        </li>
+                        <li class="bg-dark">
+                            <button id="filter-btn" type="button" class="btn btn-dark">
+                                Filter Table
+                            </button>
+                        </li>
+                    </ul>
+                   </form>
+            </div>
+            <div class="col-md-9">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Country</th>
+                            <th>Shape</th>
+                            <th>Duration</th>
+                            <th>Comments</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+    <script src="static/js/data.js"></script>
+    <script src="static/js/app.js"></script>
+</body>
+</html>
