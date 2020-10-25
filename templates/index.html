@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BurdenDerek</title>
+    <link
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body class="bg-dark">
+    <div class="wrapper">
+        <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+            <a class="navbar-brand" href="index.html">Academic Success Prediction</a>
+        </nav>
+    </div>
+    <div class="jumbotron">
+        <h1 class="display-4">How likely are you to pass your class?</h1>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <h3 class="text-light">What is most important to succeed in school?</h3>
+            </div>
+            <div class="col-md-8">
+                <p class="text-light">
+                    To build the model that is going to make the predictions I used data that is from Portugal that tracked the grade that the students got in their class along with 30 other variables; such as how much education their parents have, how long is their commute, do they have plans for higher education, how much they study, etc. After doing some research on the data showed me that Portugal uses a trimester system and that’s why each student has 3 grades for each course (G1, G2, G3). That is not the only thing interesting about their grades, they use a scale of 0 to 20, where a 10 is the lowest possible passing grade. But by far the most interesting bit is how they grade things, despite using a scale of 0 to 20, they do not make anything as a 20 because that would be a perfect score and there is always something to improve on. The data was titled ”Student Alcohol Consumption” which led me to assume that these were college age students, but a look at the students’ ages shows that it ranges from 15 to 22 and indicates that they are highschoolers.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <form action="/predict" method="post" class="bg-dark">
+                    <p class="text-light">Enter Your Answers To The Following Questions</p>
+                    <ul class="bg-dark">
+                        <li>
+                            <label for="school" class="text-light">Which School Do You Go To?</label>
+                            <select name="school" id="school">
+                                <option value="GP">Gabriel Pereira</option>
+                                <option value="MS">Mousinho da Silveira</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="sex" class="text-light">What Is Your Gender?</label>
+                            <select name="sex" id="sex">
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="age" class="text-light">How Old Are you?</label>
+                            <select name="age" id="age">
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22+</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="address" class="text-light">Where Do You Live?</label>
+                            <select name="address" id="address">
+                                <option value="U">Urban</option>
+                                <option value="R">Rural</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="famsize" class="text-light">How Big Is Your Family?</label>
+                            <select name="famsize" id="famsize">
+                                <option value="LE3">3 Or Less</option>
+                                <option value="GT3">4 Or More</option>
+                            </select>
+                        </li>  
+                        <li>
+                            <label for="Pstatus" class="text-light">Are Your Parents Together?</label>
+                            <select name="Pstatus" id="Pstatus">
+                                <option value="T">Together</option>
+                                <option value="A">Apart</option>
+                            </select>
+                        </li>  
+                        <li>
+                            <label for="Medu" class="text-light">How Much Education Does Your Mom Have?</label>
+                            <select name="Medu" id="Medu">
+                                <option value="0">None</option>
+                                <option value="1">Elementry School</option>
+                                <option value="2">Middle School</option>
+                                <option value="3">High School</option>
+                                <option value="4">Higher Education</option>
+                            </select>
+                        </li>  
+                        <li>
+                            <label for="Fedu" class="text-light">How Much Education Does Your Dad Have?</label>
+                            <select name="Fedu" id="Fedu">
+                                <option value="0">None</option>
+                                <option value="1">Elementry School</option>
+                                <option value="2">Middle School</option>
+                                <option value="3">High School</option>
+                                <option value="4">Higher Education</option>
+                            </select>
+                        </li>  
+                        <li>
+                            <label for="Mjob" class="text-light">What Does Your Mom Do For Work?</label>
+                            <select name="Mjob" id="Mjob">
+                                <option value="teacher">Teacher</option>
+                                <option value="health">Health Care</option>
+                                <option value="services">Civil Services</option>
+                                <option value="at_home">At Home</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="Fjob" class="text-light">What Does Your Dad Do For Work?</label>
+                            <select name="Fjob" id="Fjob">
+                                <option value="teacher">Teacher</option>
+                                <option value="health">Health Care</option>
+                                <option value="services">Civil Services</option>
+                                <option value="at_home">At Home</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="reason" class="text-light">Why Did You Choose Your School?</label>
+                            <select name="reason" id="reason">
+                                <option value="home">Close To Home</option>
+                                <option value="reputation">School's Reputation</option>
+                                <option value="cource">Course Preferences</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="guardian" class="text-light">Who Is Your Guardian?</label>
+                            <select name="guardian" id="guardian">
+                                <option value="mother">Mom</option>
+                                <option value="father">Dad</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </li> 
+                        <li>
+                            <label for="traveltime" class="text-light">How Many Hours Does It Take To Get To School?</label>
+                            <select name="traveltime" id="traveltime">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </li> 
+                        <li>
+                            <label for="studytime" class="text-light">How Many Hours Do You Study In A Week?</label>
+                            <select name="studytime" id="studytime">
+                                <option value="1">10</option>
+                                <option value="2">20</option>
+                                <option value="3">30</option>
+                                <option value="4">40</option>
+                            </select>
+                        </li> 
+                        <li>
+                            <label for="failures" class="text-light">How Many Classes Have You Failed Before?</label>
+                            <select name="failures" id="failures">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4+</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="schoolsup" class="text-light">Do You Get Extra Support From Your School?</label>
+                            <select name="schoolsup" id="schoolsup">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </li> 
+                        <li>
+                            <label for="famsup" class="text-light">Do You Get Extra Support From Your Family?</label>
+                            <select name="famsup" id="famsup">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="paid" class="text-light">Do You Have Extra Paid Tutoring?</label>
+                            <select name="paid" id="paid">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </li> 
+                        <li>
+                            <label for="activities" class="text-light">Do You Have Extra-Curricular Activities?</label>
+                            <select name="activities" id="activities">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </li> 
+                        <li>
+                            <label for="nursery" class="text-light">Did You Go To Nursery School?</label>
+                            <select name="nursery" id="nursery">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </li> 
+                        <li>
+                            <label for="higher" class="text-light">Do You Have Plans To Continue Your Education?</label>
+                            <select name="higher" id="higher">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="internet" class="text-light">Do You Have Internet At Home?</label>
+                            <select name="internet" id="internet">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="romantic" class="text-light">Are You In A Romantic Relationship?</label>
+                            <select name="romantic" id="romantic">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="famrel" class="text-light">How Good Is Your Relationship With Your Family?</label>
+                            <select name="famrel" id="famrel">
+                                <option value="1">Very Bad</option>
+                                <option value="2">Bad</option>
+                                <option value="3">Neutral</option>
+                                <option value="4">Good</option>
+                                <option value="5">Very Good</option>
+                            </select>
+                        </li> 
+                        <li>
+                            <label for="freetime" class="text-light">How Much Free Time Do You Have After School?</label>
+                            <select name="freetime" id="freetime">
+                                <option value="1">Very Low</option>
+                                <option value="2">Low</option>
+                                <option value="3">Neutral</option>
+                                <option value="4">High</option>
+                                <option value="5">Very High</option>
+                            </select>
+                        </li> 
+                        <li>
+                            <label for="goout" class="text-light">How Much Do You Go Out With Your Friends?</label>
+                            <select name="goout" id="goout">
+                                <option value="1">Very Low</option>
+                                <option value="2">Low</option>
+                                <option value="3">Neutral</option>
+                                <option value="4">High</option>
+                                <option value="5">Very High</option>
+                            </select>
+                        </li> 
+                        <li>
+                            <label for="Dalc" class="text-light">How Much Alcohol Do You Drink On Weekdays?</label>
+                            <select name="Dalc" id="Dalc">
+                                <option value="1">Very Low</option>
+                                <option value="2">Low</option>
+                                <option value="3">Neutral</option>
+                                <option value="4">High</option>
+                                <option value="5">Very High</option>
+                            </select>
+                        </li> 
+                        <li>
+                            <label for="Walc" class="text-light">How Much Alcohol Do You Drink On Weekends?</label>
+                            <select name="Walc" id="Walc">
+                                <option value="1">Very Low</option>
+                                <option value="2">Low</option>
+                                <option value="3">Neutral</option>
+                                <option value="4">High</option>
+                                <option value="5">Very High</option>
+                            </select>
+                        </li> 
+                        <li>
+                            <label for="health" class="text-light">How Healthy Are You?</label>
+                            <select name="health" id="health">
+                                <option value="1">Very Unhealthy</option>
+                                <option value="2">Unhealthy</option>
+                                <option value="3">Neutral</option>
+                                <option value="4">Healthy</option>
+                                <option value="5">Very Healthy</option>
+                            </select>
+                        </li>
+                        <li class="bg-dark">
+                            <label for="date" class="text-light">How Many Class Sessions Have You Missed?</label>
+                            <input type="text" placeholder="0 - 93" id="absences"/>
+                        </li>
+                        <li class="bg-dark">
+                            <input id="filter-btn" type="submit" class="btn btn-dark" value="Calculate The Odds Of Getting A Passing Grade">
+                               
+                            </input>
+                        </li>
+                    </ul>
+                   </form>
+            </div>
+            <div class="col-md-9 text-light">
+                {% if result | length %}
+                The Predicted Outcome Is {{result}}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+    <script src="static/js/test.js"></script>
+</body>
+</html>
